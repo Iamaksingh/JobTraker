@@ -8,7 +8,7 @@ registerForm.addEventListener('submit', async (e) => {
   const password = document.getElementById('password').value.trim();
 
   try {
-    const res = await fetch('http://localhost:5000/api/register', {
+    const res = await fetch('https://jobtraker-x8xq.onrender.com/api/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

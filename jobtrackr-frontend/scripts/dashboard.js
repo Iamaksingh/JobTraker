@@ -1,5 +1,5 @@
 const token = localStorage.getItem('token');
-const res = await fetch('http://localhost:5000/api/profile', {
+const res = await fetch('https://jobtraker-x8xq.onrender.com/api/profile', {
   headers: {
     Authorization: `Bearer ${token}`,
   },
@@ -16,7 +16,7 @@ if (!token) {
 // Fetch user info from backend
 async function loadProfile() {
   try {
-    const res = await fetch('http://localhost:5000/api/profile', {
+    const res = await fetch('https://jobtraker-x8xq.onrender.com/api/profile', {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${token}`,

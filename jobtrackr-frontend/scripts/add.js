@@ -20,7 +20,7 @@ form.addEventListener('submit', async (e) => {
   };
   console.log('Submitting:', data);
   try {
-    const res = await fetch('http://localhost:5000/api/jobs', {
+    const res = await fetch('https://jobtraker-x8xq.onrender.com/api/jobs', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

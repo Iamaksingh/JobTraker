@@ -8,7 +8,7 @@ function attachStatusChangeListeners() {
       const token = localStorage.getItem('token');
 
       try {
-        const res = await fetch(`http://localhost:5000/api/jobs/${jobId}`, {
+        const res = await fetch(`https://jobtraker-x8xq.onrender.com/api/jobs/${jobId}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
@@ -82,7 +82,7 @@ async function fetchJobs() {
   }
 
   try {
-    const res = await fetch('http://localhost:5000/api/jobs', {
+    const res = await fetch('https://jobtraker-x8xq.onrender.com/api/jobs', {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${token}`,
@@ -138,7 +138,7 @@ function attachDeleteListeners() {
       if (!confirmed) return;
 
       try {
-        const res = await fetch(`http://localhost:5000/api/jobs/${jobId}`, {
+        const res = await fetch(`https://jobtraker-x8xq.onrender.com/api/jobs/${jobId}`, {
           method: 'DELETE',
           headers: {
             Authorization: `Bearer ${token}`,
