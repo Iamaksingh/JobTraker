@@ -98,13 +98,3 @@ export const deleteJob = async (req, res) => {
     res.status(500).json({ message: 'Error deleting job' });
   }
 };
-
-//
-export const DeleteAll = async (req, res) => {
-  try {
-    await Job.deleteMany({ user: req.user._id });
-    res.json({ message: 'All jobs deleted' });
-  } catch (err) {
-    res.status(500).json({ message: 'Server error' });
-  }
-}
