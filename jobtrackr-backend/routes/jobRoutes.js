@@ -1,8 +1,8 @@
 // routes/jobRoutes.js
-
 import express from 'express';
 import { addJobApplication, getAllJobs, getJobById, updateJob, deleteJob } from '../controllers/jobController.js';
 import protect from '../middleware/authMiddleware.js';
+import { getUserProfile } from '../controllers/getUserProfile.js';
 
 const router = express.Router();
 
@@ -13,6 +13,7 @@ router.post('/', protect, addJobApplication);
 router.get('/', protect, getAllJobs);
 export default router;
 
+router.get('/profile', protect, getUserProfile);
 router.get('/:id', protect, getJobById);
 router.put('/:id', protect, updateJob);
 router.delete('/:id', protect, deleteJob);

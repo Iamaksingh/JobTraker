@@ -30,3 +30,4 @@ app.listen(PORT, () => {
 // Routes
 app.use('/api', authRoutes);
 app.use('/api/jobs', jobRoutes);
+app.use('/api', userRoutes);
