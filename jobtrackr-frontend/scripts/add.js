@@ -35,7 +35,6 @@ form.addEventListener('submit', async (e) => {
       const msg = document.getElementById('successMessage');
       msg.textContent = '✅ Application added!';
       msg.style.display = 'block';
-      window.location.href = 'dashboard.html';
     } else {
       alert(result.message || 'Failed to save application');
     }

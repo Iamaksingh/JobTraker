@@ -67,14 +67,14 @@ button:hover {
 
 /* Dashboard/back buttons */
 #backToDashboard, .nav-btn {
-  background-color: #6c757d;
+  background-color: #007bff;
   margin-bottom: 20px;
   align-self: flex-start;
   width: fit-content;
 }
 
 #backToDashboard:hover, .nav-btn:hover {
-  background-color: #5a6268;
+  background-color: #0056b3;
 }
 
 /* Table styling (for view.html) */
