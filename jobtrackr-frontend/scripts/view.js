@@ -1,3 +1,34 @@
+function showConfirmDialog(message) {
+  return new Promise((resolve) => {
+    const modal = document.getElementById('confirmModal');
+    const confirmMessage = document.getElementById('confirmMessage');
+    const yesBtn = document.getElementById('confirmYes');
+    const noBtn = document.getElementById('confirmNo');
+
+    confirmMessage.textContent = message;
+    modal.classList.remove('hidden');
+
+    const cleanup = () => {
+      modal.classList.add('hidden');
+      yesBtn.removeEventListener('click', onYes);
+      noBtn.removeEventListener('click', onNo);
+    };
+
+    const onYes = () => {
+      cleanup();
+      resolve(true);
+    };
+
+    const onNo = () => {
+      cleanup();
+      resolve(false);
+    };
+
+    yesBtn.addEventListener('click', onYes);
+    noBtn.addEventListener('click', onNo);
+  });
+}
+
 // Redirect back to dashboard
 document.getElementById('backToDashboard').addEventListener('click', () => {
   window.location.href = 'dashboard.html';
@@ -49,7 +80,7 @@ async function fetchJobs() {
     attachDeleteListeners(); // 👈 Attach event listeners after DOM is updated
   } catch (err) {
     console.error('Error fetching jobs:', err);
-    alert('Failed to load applications');
+    showToast('Failed to load applications', 'error');
   }
 }
 
@@ -62,7 +93,8 @@ function attachDeleteListeners() {
       const jobId = btn.dataset.id;
       const token = localStorage.getItem('token');
 
-      if (!confirm('Are you sure you want to delete this job?')) return;
+      const confirmed = await showConfirmDialog('Are you sure you want to delete this job?');
+      if (!confirmed) return;
 
       try {
         const res = await fetch(`http://localhost:5000/api/jobs/${jobId}`, {
@@ -73,7 +105,7 @@ function attachDeleteListeners() {
         });
 
         if (res.ok) {
-          alert('Job deleted successfully');
+          showToast('Job deleted successfully', 'success');
           fetchJobs(); // 🔁 Refresh list
         } else {
           const errData = await res.json();
@@ -81,8 +113,23 @@ function attachDeleteListeners() {
         }
       } catch (error) {
         console.error('Error deleting job:', error);
-        alert('An error occurred while deleting the job');
+        showToast(errData.message || 'Failed to delete job', 'error');
       }
     });
   });
+}
+
+function showToast(message, type = 'success') {
+  const container = document.getElementById('toast-container');
+  const toast = document.createElement('div');
+  toast.className = `toast ${type}`;
+  toast.textContent = message;
+
+  container.appendChild(toast);
+
+  setTimeout(() => {
+    toast.style.opacity = '0';
+    toast.style.transform = 'translateY(-20px)';
+    setTimeout(() => container.removeChild(toast), 500);
+  }, 3000);
 }

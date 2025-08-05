@@ -141,6 +141,84 @@ td a:hover {
   background-color: darkred;
 }
 
+/* Toast Notification Styles */
+#toast-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+.toast {
+  background-color: #333;
+  color: white;
+  padding: 12px 20px;
+  margin-top: 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  opacity: 0.95;
+  transition: opacity 0.5s ease, transform 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+.toast.success {
+  background-color: #28a745;
+}
+
+.toast.error {
+  background-color: #dc3545;
+}
+
+/* Confirmation Modal Styles */
+.modal.hidden {
+  display: none;
+}
+
+.modal {
+  position: fixed;
+  z-index: 10000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  text-align: center;
+  max-width: 400px;
+}
+
+.modal-buttons {
+  margin-top: 20px;
+}
+
+.modal-buttons button {
+  margin: 0 10px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#confirmYes {
+  background-color: #dc3545;
+  color: white;
+}
+
+#confirmNo {
+  background-color: #6c757d;
+  color: white;
+}
+
 /* Responsive */
 @media screen and (max-width: 600px) {
   .container {
