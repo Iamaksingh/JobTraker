@@ -1,32 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Add Job Application</title>
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
   <div class="container">
-  <h2>Add New Job Application</h2>
-  <form id="applicationForm">
-    <input type="text" id="company" placeholder="Company Name" required /><br><br>
-    <input type="text" id="role" placeholder="Role" required /><br><br>
-    <select id="status" required>
-      <option value="">-- Select Status --</option>
-      <option value="Applied">Applied</option>
-      <option value="Interview">Interview</option>
-      <option value="Rejected">Rejected</option>
-      <option value="Offer">Offer</option>
-      <option value="Converted">Converted</option>
-    </select><br><br>
-    <input type="text" id="source" placeholder="Source (LinkedIn, Referral, etc.)" required /><br><br>
-    <input type="url" id="jdLink" placeholder="Link to Job Description" required /><br><br>
+    <h2>Add New Job Application</h2>
+    <form id="applicationForm">
+      <input type="text" id="company" placeholder="Company Name" required />
+      <input type="text" id="role" placeholder="Role" required />
+      <select id="status" required>
+        <option value="">-- Select Status --</option>
+        <option value="Applied">Applied</option>
+        <option value="Interview">Interview</option>
+        <option value="Rejected">Rejected</option>
+        <option value="Offer">Offer</option>
+        <option value="Converted">Converted</option>
+      </select>
+      <select id="source" required>
+        <option value="">-- Select Source --</option>
+        <option value="LinkedIn">LinkedIn</option>
+        <option value="Referral">Referral</option>
+        <option value="Website">Website</option>
+        <option value="Other">Other</option>
+      </select>
+      <input type="url" id="jdLink" placeholder="Link to Job Description" required />
 
-    <button type="submit">Save</button>
-  </form>
-  <p id="successMessage" style="display: none; color: green; font-weight: bold;"></p>
-  <button id="backToDashboard">🔙 Back to Dashboard</button>
+      <button type="submit">Save</button>
+    </form>
+    <p id="successMessage" style="display: none; color: green; font-weight: bold;"></p>
+    <button id="backToDashboard">🔙 Back to Dashboard</button>
   </div>
   <script type="module" src="./scripts/add.js"></script>
 </body>
+
 </html>
