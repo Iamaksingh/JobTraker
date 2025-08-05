@@ -1,3 +1,37 @@
+function attachStatusChangeListeners() {
+  const dropdowns = document.querySelectorAll('.status-dropdown');
+
+  dropdowns.forEach(dropdown => {
+    dropdown.addEventListener('change', async (e) => {
+      const jobId = dropdown.dataset.id;
+      const newStatus = dropdown.value;
+      const token = localStorage.getItem('token');
+
+      try {
+        const res = await fetch(`http://localhost:5000/api/jobs/${jobId}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`
+          },
+          body: JSON.stringify({ status: newStatus })
+        });
+
+        if (res.ok) {
+          showToast('Status updated successfully');
+        } else {
+          const err = await res.json();
+          showToast(err.message || 'Failed to update status', true);
+        }
+      } catch (error) {
+        console.error('Error updating status:', error);
+        showToast('Error updating status', true);
+      }
+    });
+  });
+}
+
+
 function showConfirmDialog(message) {
   return new Promise((resolve) => {
     const modal = document.getElementById('confirmModal');
@@ -69,15 +103,22 @@ async function fetchJobs() {
       row.innerHTML = `
         <td>${job.companyName}</td>
         <td>${job.role}</td>
-        <td>${job.status}</td>
+        <td>
+          <select class="status-dropdown" data-id="${job._id}">
+            <option value="Applied" ${job.status === 'Applied' ? 'selected' : ''}>Applied</option>
+            <option value="Interview" ${job.status === 'Interview' ? 'selected' : ''}>Interview</option>
+            <option value="Rejected" ${job.status === 'Rejected' ? 'selected' : ''}>Rejected</option>
+            <option value="Offer" ${job.status === 'Offer' ? 'selected' : ''}>Offer</option>
+          </select>
+        </td>
         <td>${job.source}</td>
         <td><a href="${job.jdLink}" target="_blank">Link</a></td>
         <td><button class="delete-btn" data-id="${job._id}">Delete</button></td>
       `;
       tbody.appendChild(row);
     });
-
-    attachDeleteListeners(); // 👈 Attach event listeners after DOM is updated
+    attachDeleteListeners();
+    attachStatusChangeListeners();
   } catch (err) {
     console.error('Error fetching jobs:', err);
     showToast('Failed to load applications', 'error');

@@ -219,6 +219,21 @@ td a:hover {
   color: white;
 }
 
+.status-dropdown {
+  padding: 5px 8px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.wide-input {
+  width: 100%;
+  max-width: 400px;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
 /* Responsive */
 @media screen and (max-width: 600px) {
   .container {
