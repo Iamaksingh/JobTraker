@@ -10,10 +10,11 @@
   <h2 id="welcomeMsg">Welcome!</h2>
   <button id="logoutBtn">Logout</button>
   <hr />
-  <nav>
-    <a href="add.html">Add New Application</a><br>
-    <a href="view.html">View All Applications</a>
-  </nav>
+  <div class="card-container">
+  <div class="card" onclick="window.location.href='add.html'">➕ Add New Application</div>
+  <div class="card" onclick="window.location.href='view.html'">📄 View All Applications</div>
+  <div class="card" id="deleteAllBtn">🗑️ Delete All Applications</div>
+  </div>
   </div>
   <script type="module" src="./scripts/dashboard.js"></script>
 </body>
