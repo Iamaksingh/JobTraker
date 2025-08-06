@@ -1,5 +1,5 @@
 // controllers/jobController.js
-
+import mongoose from 'mongoose';
 import JobApplication from '../models/JobApplication.js';
 
 export const addJobApplication = async (req, res) => {
