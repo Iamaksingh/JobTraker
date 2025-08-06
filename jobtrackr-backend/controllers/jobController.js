@@ -98,3 +98,27 @@ export const deleteJob = async (req, res) => {
     res.status(500).json({ message: 'Error deleting job' });
   }
 };
+
+//fetch analytics 
+export const getAnalytics = async (req, res) => {
+  try {
+    const userId = req.user._id;
+
+    const total = await JobApplication.countDocuments({ user: userId });
+
+    const statusCounts = await JobApplication.aggregate([
+      { $match: { user: userId } },
+      { $group: { _id: "$status", count: { $sum: 1 } } }
+    ]);
+
+    const formatted = {};
+    statusCounts.forEach(s => {
+      formatted[s._id] = s.count;
+    });
+
+    res.json({ total, breakdown: formatted });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Failed to fetch analytics' });
+  }
+};
