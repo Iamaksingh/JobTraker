@@ -7,17 +7,20 @@
 </head>
 <body>
   <div class="container">
+    <div id="logout-container">
+  <button id="logoutBtn">Logout</button>
+  </div>
   <section id="analytics-section" class="analytics-box"> 
   <h2>Job Application Analytics</h2>
   <div id="analytics-content">
-    <p>Total Applications: <span id="total-count">--</span></p>
-    <p>Applied: <span id="applied-count">--</span></p>
-    <p>Interview: <span id="interview-count">--</span></p>
-    <p>Rejected: <span id="rejected-count">--</span></p>
+    <p>Total Applications: <span id="total-count" style="color: black; font-weight: bold;">--</span></p>
+    <p>Applied: <span id="applied-count" >--</span></p>
+    <p>Interview: <span id="interview-count" style="color: lightgreen; font-weight: bold;">--</span></p>
+    <p>Rejected: <span id="rejected-count" style="color: red; font-weight: bold;">--</span></p>
+    <canvas id="statusPieChart" width="300" height="300"></canvas>
   </div>
   </section>
   <h2 id="welcomeMsg">Welcome!</h2>
-  <button id="logoutBtn">Logout</button><br>
   <hr />
   <div class="card-container">
   <div class="card" onclick="window.location.href='add.html'">Add New Application</div>
@@ -25,5 +28,6 @@
   </div>
   </div>
   <script type="module" src="./scripts/dashboard.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 </html>

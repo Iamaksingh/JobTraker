@@ -69,3 +69,56 @@ logoutBtn.addEventListener('click', () => {
   localStorage.removeItem('token');
   window.location.href = 'index.html';
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const token = localStorage.getItem('token');
+
+  fetch('https://jobtraker-x8xq.onrender.com/api/jobs/analytics', {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  })
+    .then(res => res.json())
+    .then(data => {
+      const applied = data.breakdown.Applied || 0;
+      const interview = data.breakdown.Interview || 0;
+      const rejected = data.breakdown.Rejected || 0;
+
+      // Show total stats
+      document.getElementById('total-count').textContent = data.total;
+      document.getElementById('applied-count').textContent = applied;
+      document.getElementById('interview-count').textContent = interview;
+      document.getElementById('rejected-count').textContent = rejected;
+
+      // Create Pie Chart
+      const ctx = document.getElementById('statusPieChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'pie',
+        data: {
+          labels: ['Applied', 'Interview', 'Rejected'],
+          datasets: [{
+            label: 'Application Status',
+            data: [applied, interview, rejected],
+            backgroundColor: ['#36A2EB', 'lightgreen', '#FF6384'],
+            borderColor: ['#fff', '#fff', '#fff'],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: 'bottom',
+            },
+            title: {
+              display: true,
+              text: 'Application Status Breakdown'
+            }
+          }
+        }
+      });
+    })
+    .catch(err => {
+      console.error('Error fetching analytics:', err);
+    });
+});
