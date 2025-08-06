@@ -7,6 +7,10 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <label class="theme-switch">
+  <input type="checkbox" id="themeToggle">
+  <span class="slider"></span>
+</label>
   <div class="container">
     <h1>Login!</h1>
     <form id="loginForm">
@@ -21,5 +25,6 @@
     <p>Logging you in...</p>
   </div>
   <script src="scripts/auth.js"></script>
+  <script type="module" src="./scripts/toggle.js"></script>
 </body>
 </html>

@@ -6,6 +6,10 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <label class="theme-switch">
+  <input type="checkbox" id="themeToggle">
+  <span class="slider"></span>
+</label>
   <div class="container">
     <div id="logout-container">
   <button id="logoutBtn">Logout</button>
@@ -13,10 +17,10 @@
   <section id="analytics-section" class="analytics-box"> 
   <h2>Job Application Analytics</h2>
   <div id="analytics-content">
-    <p>Total Applications: <span id="total-count" style="color: black; font-weight: bold;">--</span></p>
-    <p>Applied: <span id="applied-count" >--</span></p>
-    <p>Interview: <span id="interview-count" style="color: lightgreen; font-weight: bold;">--</span></p>
-    <p>Rejected: <span id="rejected-count" style="color: red; font-weight: bold;">--</span></p>
+    <p>Total Applications: <span id="total-count"  class="count-number" style="font-weight: bold;">--</span></p>
+    <p>Applied: <span id="applied-count" class="Applied-number" >--</span></p>
+    <p>Interview: <span id="interview-count" class="Interview-number">--</span></p>
+    <p>Rejected: <span id="rejected-count" class="rejected-number">--</span></p>
     <canvas id="statusPieChart" width="300" height="300"></canvas>
   </div>
   </section>
@@ -29,5 +33,6 @@
   </div>
   <script type="module" src="./scripts/dashboard.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script type="module" src="./scripts/toggle.js"></script>
 </body>
 </html>
