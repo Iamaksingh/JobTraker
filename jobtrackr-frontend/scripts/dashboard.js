@@ -46,3 +46,23 @@ logoutBtn.addEventListener('click', () => {
   localStorage.removeItem('token');
   window.location.href = 'index.html';
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const token = localStorage.getItem('token');
+
+  fetch('/api/jobs/analytics', {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  })
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById('total-count').textContent = data.total;
+      document.getElementById('applied-count').textContent = data.breakdown.Applied || 0;
+      document.getElementById('interview-count').textContent = data.breakdown.Interview || 0;
+      document.getElementById('rejected-count').textContent = data.breakdown.Rejected || 0;
+    })
+    .catch(err => {
+      console.error('Error fetching analytics:', err);
+    });
+});
