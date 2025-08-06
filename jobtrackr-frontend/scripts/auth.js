@@ -1,8 +1,10 @@
 const loginForm = document.getElementById('loginForm');
+const loadingSpinner = document.getElementById('loading-spinner');
 
 loginForm.addEventListener('submit', async (e) => {
   e.preventDefault();
-
+  loadingSpinner.style.display = 'flex';
+  loginForm.style.display = 'none';
   const email = document.getElementById('email').value.trim();
   const password = document.getElementById('password').value.trim();
   console.log(JSON.stringify({ email, password }))
@@ -16,7 +18,6 @@ loginForm.addEventListener('submit', async (e) => {
     });
 
     const data = await res.json();
-    console.log('Response:', res.status, data);  // 👈 Add this line
 
     if (res.ok) {
       localStorage.setItem('token', data.token);
@@ -25,7 +26,8 @@ loginForm.addEventListener('submit', async (e) => {
       alert(data.message || 'Login failed');
     }
   } catch (err) {
-    console.error('Fetch failed:', err);  // 👈 Add this line
     alert('Server error');
   }
+  loadingSpinner.style.display = 'none';
+  loginForm.style.display = 'block';
 });
