@@ -102,7 +102,7 @@ export const deleteJob = async (req, res) => {
 //fetch analytics 
 export const getAnalytics = async (req, res) => {
   try {
-    const userId = req.user._id;
+    const userId = new mongoose.Types.ObjectId(req.user._id); // cast to ObjectId
 
     const total = await JobApplication.countDocuments({ user: userId });
 
@@ -118,7 +118,7 @@ export const getAnalytics = async (req, res) => {
 
     res.json({ total, breakdown: formatted });
   } catch (error) {
-    console.error(error);
+    console.error('Analytics Error:', error); // helpful for logs
     res.status(500).json({ message: 'Failed to fetch analytics' });
   }
 };
