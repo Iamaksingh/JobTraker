@@ -4,15 +4,6 @@ import { addJobApplication, getAllJobs, getJobById, updateJob, deleteJob, getAna
 import protect from '../middleware/authMiddleware.js';
 import { getUserProfile } from '../controllers/getUserProfile.js';
 
-import {
-  addJobApplication,
-  getAllJobs,
-  getJobById,
-  updateJob,
-  deleteJob,
-  getAnalytics
-} from '../controllers/jobController.js';
-
 const router = express.Router();
 
 // ❗ Static routes come first
