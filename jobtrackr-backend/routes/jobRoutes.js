@@ -1,6 +1,6 @@
 // routes/jobRoutes.js
 import express from 'express';
-import { addJobApplication, getAllJobs, getJobById, updateJob, deleteJob} from '../controllers/jobController.js';
+import { addJobApplication, getAllJobs, getJobById, updateJob, deleteJob, getAnalytics} from '../controllers/jobController.js';
 import protect from '../middleware/authMiddleware.js';
 import { getUserProfile } from '../controllers/getUserProfile.js';
 
