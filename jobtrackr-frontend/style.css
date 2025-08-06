@@ -240,7 +240,7 @@ td a:hover {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  position: fixed; /* covers entire screen */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -292,16 +292,20 @@ td a:hover {
   color: #007bff;
 }
 
+.analytics-box .rejected {
+  color: red;
+  font-weight: bold;
+}
+
 #statusPieChart {
   margin: 20px auto;
   display: block;
   max-width: 400px;
 }
 
-
 #logout-container {
-  text-align: right;      /* aligns logout to right of the container */
-  margin: 10px 20px;      /* optional spacing */
+  text-align: right;
+  margin: 10px 20px;
 }
 
 #logoutBtn {
@@ -313,6 +317,9 @@ td a:hover {
   cursor: pointer;
   font-weight: bold;
   transition: background 0.3s ease;
+  position: relative;
+  top: 0;
+  right: 0;
 }
 
 #logoutBtn:hover {
@@ -321,16 +328,51 @@ td a:hover {
 
 /* Responsive */
 @media screen and (max-width: 600px) {
+  body {
+    padding: 10px;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
   .container {
-    padding: 20px;
+    padding: 15px;
+    max-width: 100%;
   }
 
   table, th, td {
     font-size: 14px;
   }
 
-  button {
+  button, #logoutBtn {
     font-size: 14px;
     padding: 8px 12px;
   }
+
+  .card {
+    font-size: 16px;
+    padding: 15px 20px;
+    min-width: 140px;
+  }
+
+  .analytics-box p {
+    font-size: 1rem;
+  }
+
+  #logout-container {
+    text-align: center;
+    margin: 10px auto;
+  }
+}
+
+/* Responsive wrapper for tables */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* Ensure table stays within its wrapper */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px; /* Ensures scrolling on smaller devices */
 }

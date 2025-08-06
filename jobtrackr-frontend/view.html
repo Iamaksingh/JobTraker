@@ -1,42 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>All Applications</title>
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
   <div id="toast-container"></div>
   <div id="confirmModal" class="modal hidden">
-  <div class="modal-content">
-    <p id="confirmMessage">Are you sure you want to delete this job?</p>
-    <div class="modal-buttons">
-      <button id="confirmYes">Yes</button>
-      <button id="confirmNo">Cancel</button>
+    <div class="modal-content">
+      <p id="confirmMessage">Are you sure you want to delete this job?</p>
+      <div class="modal-buttons">
+        <button id="confirmYes">Yes</button>
+        <button id="confirmNo">Cancel</button>
+      </div>
     </div>
   </div>
-</div>
   <div class="container">
-  <h2>Your Job Applications</h2>
-  <table border="1">
-    <thead>
-      <tr>
-        <th>Company</th>
-        <th>Role</th>
-        <th class="wide-input" >Status</th>
-        <th>Source</th>
-        <th>JD Link</th>
-        <th id="delete-btn">Delete</th>
-      </tr>
-    </thead>
-    <tbody id="jobTableBody">
-      <!-- Jobs will be inserted here -->
-    </tbody>
-  </table>
-  <br>
-  <button id="backToDashboard">Back to Dashboard</button>
+    <h2>Your Job Applications</h2>
+    <div class="table-wrapper">
+      <table border="1">
+        <thead>
+          <tr>
+            <th>Company</th>
+            <th>Role</th>
+            <th class="wide-input">Status</th>
+            <th>Source</th>
+            <th>JD Link</th>
+            <th id="delete-btn">Delete</th>
+          </tr>
+        </thead>
+        <tbody id="jobTableBody">
+          <!-- Jobs will be inserted here -->
+        </tbody>
+      </table>
+    </div>
+    <br>
+    <button id="backToDashboard">Back to Dashboard</button>
   </div>
   <script src="scripts/view.js"></script>
 </body>
+
 </html>
