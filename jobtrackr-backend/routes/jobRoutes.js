@@ -12,8 +12,8 @@ router.post('/', protect, addJobApplication);
 // GET /api/jobs
 router.get('/', protect, getAllJobs);
 router.get('/profile', protect, getUserProfile);
+router.get('/analytics', authMiddleware, getAnalytics);
 router.get('/:id', protect, getJobById);
 router.put('/:id', protect, updateJob);
-router.get('/analytics', authMiddleware, getAnalytics);
 router.delete('/:id', protect, deleteJob);
 export default router;
